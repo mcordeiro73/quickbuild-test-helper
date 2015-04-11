@@ -5,6 +5,22 @@ import java.util.logging.Level;
 import org.slf4j.Logger;
 import org.slf4j.Marker;
 
+/**
+ * 
+ * <p>
+ * A class that fronts an instance of {@link java.util.logger.Logger} with the
+ * {@link org.slf4j.Logger} interface.
+ * </p>
+ * 
+ * <p>
+ * This implementation is quite straightforward and ignores all arguments passed
+ * excluding the {@link java.lang.String} {@literal msg} and
+ * {@link java.lang.Throwable} {@literal t} parameters.
+ * </p>
+ * 
+ * @author michaelcordeiro
+ *
+ */
 public class QuickbuildTestLogger implements Logger {
 
 	private final java.util.logging.Logger logger;
@@ -13,11 +29,31 @@ public class QuickbuildTestLogger implements Logger {
 		super();
 		this.logger = logger;
 	}
-	
+
+	/**
+	 * <p>
+	 * Creates a new instance of {@link QuickbuildTestLogger} using the
+	 * {@link java.util.logging.Logger} with the {@literal name} to execute any
+	 * logging requests.
+	 * </p>
+	 * 
+	 * @param name
+	 *            Name of the Logger instance to use
+	 * @return a new QuickbuildTestLogger
+	 */
 	public static QuickbuildTestLogger getLogger(String name) {
 		return new QuickbuildTestLogger(java.util.logging.Logger.getLogger(name));
 	}
-	
+
+	/**
+	 * <p>
+	 * Creates a new instance of {@link QuickbuildTestLogger} using the
+	 * Anonymous {@link java.util.logging.Logger} to execute any logging
+	 * requests.
+	 * </p>
+	 * 
+	 * @return a new QuickbuildTestLogger
+	 */
 	public static QuickbuildTestLogger getAnonymousLogger() {
 		return new QuickbuildTestLogger(java.util.logging.Logger.getAnonymousLogger());
 	}
